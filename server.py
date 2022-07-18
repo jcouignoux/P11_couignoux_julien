@@ -1,4 +1,5 @@
 import json
+import sys
 from flask import Flask, render_template, request, redirect, flash, url_for
 
 
@@ -28,9 +29,11 @@ def index():
 
 @app.route('/showSummary', methods=['POST'])
 def showSummary():
-    club = [club for club in clubs if club['email']
-            == request.form['email']][0]
-    if len(club) == 0:
+    # print(clubs, flush=True)
+    try:
+        club = [club for club in clubs if club['email']
+                == request.form['email']][0]
+    except:
         flash("Unknown email, please try again.")
         return render_template('index.html')
     return render_template('welcome.html', club=club, competitions=competitions)

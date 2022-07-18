@@ -1,5 +1,4 @@
 import server
-from tests.conftest import myReponses
 
 
 def test_index(client):

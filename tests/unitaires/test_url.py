@@ -1,9 +1,10 @@
+from http import HTTPStatus
 import server
 
 
 def test_index(client):
     response = client.get('/')
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
 
 
 # def test_showSummary(client, mocker):
@@ -71,6 +72,6 @@ def test_index(client):
 #     assert response.status_code == 400
 
 
-# def test_logout(client):
-#     response = client.get('/logout')
-#     assert response.status_code == 302
+def test_logout(client):
+    response = client.get('/logout')
+    assert response.status_code == 302

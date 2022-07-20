@@ -1,9 +1,6 @@
-import json
-<<<<<<< HEAD
-=======
-import sys
->>>>>>> master
 from flask import Flask, render_template, request, redirect, flash, url_for
+import sys
+import json
 
 
 def loadClubs():
@@ -32,18 +29,12 @@ def index():
 
 @app.route('/showSummary', methods=['POST'])
 def showSummary():
-<<<<<<< HEAD
-    club = [club for club in clubs if club['email']
-            == request.form['email']][0]
-=======
-    # print(clubs, flush=True)
     try:
         club = [club for club in clubs if club['email']
                 == request.form['email']][0]
     except:
         flash("Unknown email, please try again.")
         return render_template('index.html')
->>>>>>> master
     return render_template('welcome.html', club=club, competitions=competitions)
 
 

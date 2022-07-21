@@ -54,16 +54,15 @@ def test_not_enough_points(client, mocker):
     assert b"You doesnt have enough points." in response.data
 
 
-# def test_not_exceed_max_places(client, mocker):
-#     mocker.patch.object(server, 'clubs', mocker_clubs)
-#     mocker.patch.object(server, 'competitions', mocker_competitions)
-#     data = {
-#         'club': mocker_clubs[0]['name'],
-#         'competition': mocker_competitions[0]['name'],
-#         'places': 30
-#     }
-#     response = client.post(
-#         '/purchasePlaces', data=data)
-#     assert response.status_code == HTTPStatus.OK
-#     assert f"Max places number must be less than 12" in response.data.decode(
-#     )
+def test_not_exceed_max_places(client, mocker):
+    mocker.patch.object(server, 'clubs', mocker_clubs)
+    mocker.patch.object(server, 'competitions', mocker_competitions)
+    data = {
+        'club': mocker_clubs[0]['name'],
+        'competition': mocker_competitions[0]['name'],
+        'places': 13
+    }
+    response = client.post(
+        '/purchasePlaces', data=data)
+    assert response.status_code == HTTPStatus.OK
+    assert b"You cannot book more than 12 places." in response.data

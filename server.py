@@ -1,5 +1,6 @@
 import json
 import sys
+from datetime import datetime
 from flask import Flask, render_template, request, redirect, flash, url_for
 
 
@@ -20,6 +21,7 @@ app.secret_key = 'something_special'
 
 competitions = loadCompetitions()
 clubs = loadClubs()
+datenow = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
 @app.route('/')
@@ -36,7 +38,7 @@ def showSummary():
     except:
         flash("Unknown email, please try again.")
         return render_template('index.html')
-    return render_template('welcome.html', club=club, competitions=competitions)
+    return render_template('welcome.html', club=club, competitions=competitions, datenow=datenow)
 
 
 @app.route('/book/<competition>/<club>')

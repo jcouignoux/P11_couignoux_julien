@@ -12,7 +12,6 @@ def test_passed_competitions(client, mocker):
         'places': 5
     }
     response = client.post('/purchasePlaces', data=data)
-    expected_value = int(mocker_clubs[0]['points']) - data['places']
     assert response.status_code == HTTPStatus.OK
     assert f'Points available: ' + \
-        str(expected_value) in response.data.decode()
+        str(mocker_clubs[0]['points']) in response.data.decode()

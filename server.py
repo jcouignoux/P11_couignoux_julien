@@ -48,7 +48,7 @@ def book(competition, club):
         return render_template('booking.html', club=foundClub, competition=foundCompetition)
     else:
         flash("Something went wrong-please try again")
-        return render_template('welcome.html', club=club, competitions=competitions)
+        return render_template('welcome.html', club=club, competitions=competitions, datenow=datenow)
 
 
 @app.route('/purchasePlaces', methods=['POST'])
@@ -66,8 +66,9 @@ def purchasePlaces():
     else:
         competition['numberOfPlaces'] = int(
             competition['numberOfPlaces'])-placesRequired
+        club['points'] = int(club['points'])-placesRequired
         flash('Great-booking complete!')
-        return render_template('welcome.html', club=club, competitions=competitions)
+        return render_template('welcome.html', club=club, competitions=competitions, datenow=datenow)
 
 
 # TODO: Add route for points display

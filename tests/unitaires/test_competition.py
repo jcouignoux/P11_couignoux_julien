@@ -1,6 +1,6 @@
 from http import HTTPStatus
 import server
-from tests.conftest import client, mocker_clubs, mocker_competitions
+from tests.conftest import mocker_clubs, mocker_competitions
 
 
 def test_passed_competitions(client, mocker):
@@ -9,7 +9,6 @@ def test_passed_competitions(client, mocker):
     data = mocker_clubs[0]
     response = client.post('/showSummary', data=data)
     assert response.status_code == HTTPStatus.OK
-    # assert response.url == '/showSummary'
     assert b'Book Places' not in response.data
 
 
@@ -19,5 +18,4 @@ def test_futur_competitions(client, mocker):
     data = mocker_clubs[0]
     response = client.post('/showSummary', data=data)
     assert response.status_code == HTTPStatus.OK
-    # assert response.url == '/showSummary'
     assert b'Book Places' in response.data

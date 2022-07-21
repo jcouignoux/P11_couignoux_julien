@@ -41,8 +41,8 @@ mocker_competitions = [
         "numberOfPlaces": "13"
     },
     {
-        "name": "Super Smash Force",
-        "date": "3000-10-22 13:30:00",
-        "numberOfPlaces": "18"
+        "name": "Test Passed Competition",
+        "date": "2100-07-21 17:05:00",
+        "numberOfPlaces": "8"
     }
 ]

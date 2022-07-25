@@ -31,7 +31,7 @@ def index():
 
 @app.route('/showSummary', methods=['POST'])
 def showSummary():
-    # print(clubs, flush=True)
+    print(request.form['email'])
     try:
         club = [club for club in clubs if club['email']
                 == request.form['email']][0]
@@ -73,6 +73,10 @@ def purchasePlaces():
 
 
 # TODO: Add route for points display
+@app.route('/board', methods=['POST'])
+def board():
+    cur_club = request.form['cur_club']
+    return render_template('board.html', clubs=clubs, cur_club=cur_club)
 
 
 @app.route('/logout')

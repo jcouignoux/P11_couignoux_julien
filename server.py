@@ -22,6 +22,7 @@ app.secret_key = 'something_special'
 competitions = loadCompetitions()
 clubs = loadClubs()
 datenow = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+PpP = 3
 
 
 @app.route('/')
@@ -31,7 +32,6 @@ def index():
 
 @app.route('/showSummary', methods=['POST'])
 def showSummary():
-    print(request.form['email'])
     try:
         club = [club for club in clubs if club['email']
                 == request.form['email']][0]
@@ -58,7 +58,7 @@ def purchasePlaces():
                    == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     placesRequired = int(request.form['places'])
-    if int(club['points']) < placesRequired:
+    if int(club['points']) < (placesRequired * PpP):
         flash("You doesnt have enough points.")
         return render_template('booking.html', club=club, competition=competition)
     if placesRequired > 12:
@@ -66,8 +66,8 @@ def purchasePlaces():
         return render_template('booking.html', club=club, competition=competition)
     else:
         competition['numberOfPlaces'] = int(
-            competition['numberOfPlaces'])-placesRequired
-        club['points'] = int(club['points'])-placesRequired
+            competition['numberOfPlaces']) - placesRequired
+        club['points'] = int(club['points']) - (placesRequired * PpP)
         flash('Great-booking complete!')
         return render_template('welcome.html', club=club, competitions=competitions, datenow=datenow)
 

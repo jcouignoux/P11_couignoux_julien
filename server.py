@@ -31,7 +31,6 @@ def index():
 
 @app.route('/showSummary', methods=['POST'])
 def showSummary():
-    print(request.form['email'])
     try:
         club = [club for club in clubs if club['email']
                 == request.form['email']][0]

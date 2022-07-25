@@ -3,7 +3,7 @@ import server
 from tests.conftest import mocker_clubs, mocker_competitions
 
 
-def test_passed_competitions(client, mocker):
+def test_points_reflected(client, mocker):
     mocker.patch.object(server, 'clubs', mocker_clubs)
     mocker.patch.object(server, 'competitions', mocker_competitions)
     data = {

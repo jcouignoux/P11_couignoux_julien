@@ -1,4 +1,3 @@
-
 from http import HTTPStatus
 import server
 from tests.conftest import client, mocker_clubs

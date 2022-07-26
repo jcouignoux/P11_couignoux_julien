@@ -1,6 +1,6 @@
 from http import HTTPStatus
 import server
-from tests.conftest import client, mocker_clubs, mocker_competitions
+from tests.conftest import client, mocker_clubs
 
 
 def test_board(client, mocker):

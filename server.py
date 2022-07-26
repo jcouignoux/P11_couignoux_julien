@@ -1,5 +1,4 @@
 import json
-import sys
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, flash, url_for
 
@@ -65,8 +64,11 @@ def purchasePlaces():
         flash("You cannot book more than 12 places.")
         return render_template('booking.html', club=club, competition=competition)
     else:
-        competition['numberOfPlaces'] = int(
-            competition['numberOfPlaces']) - placesRequired
+        for comp in competitions:
+            if comp['name'] == competition['name']:
+                index = competitions.index(comp)
+                competitions[index]['numberOfPlaces'] = int(
+                    competition['numberOfPlaces']) - placesRequired
         club['points'] = int(club['points']) - (placesRequired * PpP)
         flash('Great-booking complete!')
         return render_template('welcome.html', club=club, competitions=competitions, datenow=datenow)

@@ -15,7 +15,7 @@ mocker_clubs = [
     {
         'name': 'Simply Lift',
         'email': 'john@simplylift.co',
-        'points': '60'
+        'points': '200'
     },
     {
         'name': 'Iron Temple',

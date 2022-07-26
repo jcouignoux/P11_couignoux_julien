@@ -12,6 +12,5 @@ def test_book(client, mocker):
     }
     response = client.get(
         '/book/' + data['competition'] + '/' + data['club'])
-    # '/book/' + str(data["competition"]) + '/' + str(data["club"]), data=data)
     assert response.status_code == HTTPStatus.OK
     assert f'How many places?' in response.data.decode()

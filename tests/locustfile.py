@@ -27,5 +27,5 @@ class ProjectPerfTest(HttpUser):
         response = self.client.post('/purchasePlaces', self.data)
 
     @task
-    def purchasePlaces(self):
+    def logout(self):
         response = self.client.get('/logout')

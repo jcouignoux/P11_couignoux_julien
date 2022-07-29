@@ -1,11 +1,11 @@
 from locust import HttpUser, task
-from tests.conftest import mocker_clubs, mocker_competitions
+from server import competitions, clubs
 
 
 class ProjectPerfTest(HttpUser):
     data = {
-        'club': mocker_clubs[0]['name'],
-        'competition': mocker_competitions[0]['name'],
+        'club': clubs[0]['name'],
+        'competition': competitions[0]['name'],
         'places': 5
     }
 

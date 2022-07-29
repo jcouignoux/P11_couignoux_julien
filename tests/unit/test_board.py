@@ -5,9 +5,6 @@ from tests.conftest import client, mocker_clubs
 
 def test_board(client, mocker):
     mocker.patch.object(server, 'clubs', mocker_clubs)
-    data = {
-        'cur_club': mocker_clubs[0]['email']
-    }
-    response = client.post('/board', data=data)
+    response = client.get('/board')
     assert response.status_code == HTTPStatus.OK
     assert f'Points Board' in response.data.decode()

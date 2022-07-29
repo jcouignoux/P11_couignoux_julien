@@ -17,7 +17,7 @@ def test_booking(client, mocker):
     response = client.post(
         '/showSummary', data=mocker_clubs[0])
     assert response.status_code == HTTPStatus.OK
-    assert f'Points Board' in response.data.decode()
+    assert f'Welcome,' in response.data.decode()
 
     response = client.get(
         '/book/' + data['competition'] + '/' + data['club'])

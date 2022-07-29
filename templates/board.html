@@ -15,10 +15,7 @@
         <hr />
         {% endfor %}
     </ul>
-    <form action="showSummary" method="post">
-        <input type="hidden" name="email" id="" value={{ cur_club }} />
-        <button type="submit">Return</button>
-    </form>
+    <a href="{{ url_for('index') }}">Return</a>
     {% with messages = get_flashed_messages()%}
     {% if messages %}
         <ul>

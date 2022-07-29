@@ -3,6 +3,5 @@ bin
 include
 lib
 .Python
-tests/
 .envrc
 __pycache__

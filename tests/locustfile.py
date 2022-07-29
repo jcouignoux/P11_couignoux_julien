@@ -28,4 +28,4 @@ class ProjectPerfTest(HttpUser):
 
     @task
     def purchasePlaces(self):
-        response = self.client.post('/logout')
+        response = self.client.get('/logout')
